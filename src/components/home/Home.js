@@ -28,8 +28,6 @@ const Home = () => {
 
                 {games.map(x => <AllGames key={x._id} game={x} />)}
 
-
-
             </div>
         </section>
     );
