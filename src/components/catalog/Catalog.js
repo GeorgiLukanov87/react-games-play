@@ -7,8 +7,6 @@ const Catalog = (props) => {
     return (
         <section id="catalog-page">
             
-
-
             {games.length > 0
                 ? <h1>All Games</h1> 
                 : <h3 className="no-articles">No articles yet</h3>
