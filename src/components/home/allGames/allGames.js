@@ -4,7 +4,7 @@ const AllGames = ({
     return (
         <div className="game">
             <div className="image-wrap">
-                <img src={game.imageUrl} />
+                <img src={game.imageUrl} alt="image url" />
             </div>
             <h3>{game.title}</h3>
             <div className="rating">
