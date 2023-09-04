@@ -1,17 +1,9 @@
-import { useEffect, useState } from "react";
-import { getAll } from "../../services/gameService";
+
 import AllGames from "./allGames/allGames";
 
+const Home = (props) => {
 
-const Home = () => {
-    const [games, setGames] = useState([]);
-
-    useEffect(() => {
-        getAll().then(gamesResult => {
-            console.log(gamesResult)
-            setGames(gamesResult)
-        });
-    }, []);
+    const { games } = props
 
     return (
         <section id="welcome-world">
@@ -24,8 +16,9 @@ const Home = () => {
 
                 {games.length > 0
                     ? <h1>Latest Games</h1>
-                    : <p className="no-articles">No games yet</p>}
-
+                    : <p className="no-articles">No games yet</p>
+                }
+                
                 {games.map(x => <AllGames key={x._id} game={x} />)}
 
             </div>
