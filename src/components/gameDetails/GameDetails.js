@@ -36,19 +36,19 @@ const GameDetails = ({
             <h1>Game Details</h1>
             <div className="info-section">
                 <div className="game-header">
-                    <img className="game-img" src={game.imageUrl} alt="no-game" />
-                    <h1>{game.title}</h1>
-                    <span className="levels">MaxLevel: {game.maxLevel}</span>
+                    <img className="game-img" src={game?.imageUrl} alt="no-game" />
+                    <h1>{game?.title}</h1>
+                    <span className="levels">MaxLevel: {game?.maxLevel}</span>
                     <p className="type">Action, Crime, Fantasy</p>
                 </div>
                 <p className="text">
-                    {game.summary}
+                    {game?.summary}
                 </p>
 
                 <div className="details-comments">
                     <h2>Comments:</h2>
                     <ul>
-                        {game.comments?.map(x =>
+                        {game?.comments?.map(x =>
                             <li key={uniqid()} className="comment">
                                 <p>{x}</p>
                             </li>
@@ -56,7 +56,7 @@ const GameDetails = ({
 
                     </ul>
                     {
-                        !game.comments &&
+                        !game?.comments &&
                         <p className="no-comment">No comments.</p>
                     }
 
