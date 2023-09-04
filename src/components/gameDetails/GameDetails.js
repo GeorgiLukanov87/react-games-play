@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import uniqid  from 'uniqid'
 
 const GameDetails = ({
     games,
@@ -17,7 +18,8 @@ const GameDetails = ({
         setComment(state => ({
             ...state,
             [e.target.name]: e.target.value
-        }))
+        }));
+        
     }
 
     const addCommentHandler = (e) => {
@@ -25,6 +27,8 @@ const GameDetails = ({
         const finalCommentResult = `${comment.comment}: ${comment.username}`;
 
         addComment(gameId, finalCommentResult);
+        comment.username = ""
+        comment.comment = ""
     }
 
     return (
@@ -45,7 +49,7 @@ const GameDetails = ({
                     <h2>Comments:</h2>
                     <ul>
                         {game.comments?.map(x =>
-                            <li className="comment">
+                            <li key={uniqid()} className="comment">
                                 <p>{x}</p>
                             </li>
                         )}
