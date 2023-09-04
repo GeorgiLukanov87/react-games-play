@@ -13,7 +13,7 @@ const Catalog = (props) => {
                 ? <h1>All Games</h1> 
                 : <h3 className="no-articles">No articles yet</h3>
             }
-            {games.map(x => <CatalogItem game={x} />)}
+            {games.map(x => <CatalogItem key={x._id} game={x} />)}
 
         </section>
     );
