@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-const GameDetails = ({ 
+const GameDetails = ({
     games,
     addComment,
- }) => {
+}) => {
     const { gameId } = useParams();
     const [comment, setComment] = useState({
         username: '',
@@ -13,8 +13,8 @@ const GameDetails = ({
 
     const game = games.find(x => x._id === gameId)
 
-    const onChange = (e) =>{
-        setComment(state =>({
+    const onChange = (e) => {
+        setComment(state => ({
             ...state,
             [e.target.name]: e.target.value
         }))
@@ -23,7 +23,7 @@ const GameDetails = ({
     const addCommentHandler = (e) => {
         e.preventDefault();
         const finalCommentResult = `${comment.comment}: ${comment.username}`;
-        
+
         addComment(gameId, finalCommentResult);
     }
 
@@ -44,11 +44,18 @@ const GameDetails = ({
                 <div className="details-comments">
                     <h2>Comments:</h2>
                     <ul>
-                        <li className="comment">
-                            <p>Content: I rate this one quite highly.</p>
-                        </li>
+                        {game.comments?.map(x =>
+                            <li className="comment">
+                                <p>{x}</p>
+                            </li>
+                        )}
+
                     </ul>
-                    <p className="no-comment">No comments.</p>
+                    {
+                        !game.comments &&
+                        <p className="no-comment">No comments.</p>
+                    }
+
                 </div>
 
                 <div className="buttons">
@@ -77,12 +84,12 @@ const GameDetails = ({
                         value={comment.comment}
                     />
 
-                    <input 
+                    <input
                         className="btn submit"
                         type="submit"
                         value="Add Comment"
                     />
-        
+
                 </form>
             </article>
         </section>
