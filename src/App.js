@@ -32,7 +32,6 @@ function App() {
         navigate('/catalog')
     }
 
-
     const addComment = (gameId, comment) => {
         setGames(state => {
             const game = state.find(x => x._id === gameId);
