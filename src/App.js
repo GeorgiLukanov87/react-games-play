@@ -1,18 +1,21 @@
 import './App.css';
+import uniqid  from 'uniqid'
+
 import Catalog from './components/catalog/Catalog';
 import CreateGame from './components/createGame/CreateGame';
 import Header from './components/header/Header'
 import Home from './components/home/Home';
-import uniqid  from 'uniqid'
-
-import { useEffect, useState } from "react";
-import { getAll } from "./services/gameService";
+import GameDetails from './components/gameDetails/GameDetails';
 
 import Login from './components/login/Login';
 import Register from './components/register/Register'
 
+import { useEffect, useState } from "react";
+import { getAll } from "./services/gameService";
+
 import { Routes, Route, useNavigate } from 'react-router-dom'
-import GameDetails from './components/gameDetails/GameDetails';
+
+
 function App() {
     const [games, setGames] = useState([]);
     const navigate = useNavigate();
@@ -25,6 +28,7 @@ function App() {
                 _id: uniqid(),
             },
         ]);
+
         navigate('/catalog')
     }
 
