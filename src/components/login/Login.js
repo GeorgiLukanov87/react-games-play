@@ -1,7 +1,20 @@
 const Login = () => {
+    const onSubmit = (e) => {
+        e.preventDefault();
+        const {
+            email,
+            password,
+        } = Object.fromEntries(new FormData(e.target))
+
+        console.log(email)
+        console.log(password)
+
+
+    }
+
     return (
         <section id="login-page" className="auth">
-            <form id="login">
+            <form id="login" onSubmit={onSubmit}>
                 <div className="container">
                     <div className="brand-logo" />
                     <h1>Login</h1>

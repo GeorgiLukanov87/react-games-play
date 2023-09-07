@@ -1,6 +1,7 @@
-const baseUrl = 'http://localhost:3030';
+import * as request from "../components/register/requester";
 
-export const getAll = async () => {
-    const res = await fetch(`${baseUrl}/data/games/`);
-    return await res.json();
-};
+const baseUrl = 'http://localhost:3030/data/games/';
+
+export const getAll = () => request.get(baseUrl);
+    
+
