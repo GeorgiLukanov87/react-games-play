@@ -8,7 +8,8 @@ import Home from './components/home/Home';
 import GameDetails from './components/gameDetails/GameDetails';
 
 import Login from './components/login/Login';
-import Register from './components/register/Register'
+import Register from './components/register/Register';
+import { Logout } from './components/logout/Logout';
 
 import { useEffect, useState } from "react";
 import { getAll } from "./services/gameService";
@@ -24,6 +25,10 @@ function App() {
 
     const userLogin = (authData) => {
         setAuth(authData);
+    }
+
+    const userLogout = () => {
+        setAuth({});
     }
 
     const addGameHandler = (gameData) => {
@@ -61,7 +66,7 @@ function App() {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ user: auth, userLogin }}>
+        <AuthContext.Provider value={{ user: auth, userLogin, userLogout }}>
             <div id="box">
                 <Header />
                 <main id="main-content">
@@ -70,6 +75,7 @@ function App() {
                         <Route path="/" element={<Home games={games} />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
+                        <Route path='/logout' element={<Logout />} />
                         <Route path="/create" element={<CreateGame addGameHandler={addGameHandler} />} />
                         <Route path="/catalog" element={<Catalog games={games} />} />
                         <Route path="/catalog/:gameId" element={<GameDetails games={games} addComment={addComment} />} />
