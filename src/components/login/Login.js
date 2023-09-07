@@ -1,3 +1,5 @@
+import { login } from "../register/authService";
+
 const Login = () => {
     const onSubmit = (e) => {
         e.preventDefault();
@@ -9,6 +11,10 @@ const Login = () => {
         console.log(email)
         console.log(password)
 
+        login(email, password)
+        .then(authData =>{
+            console.log(authData)
+        })
 
     }
 
