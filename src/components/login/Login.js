@@ -1,6 +1,10 @@
+
+import { useNavigate } from "react-router-dom";
+
 import { login } from "../register/authService";
 
 const Login = () => {
+    const navigate = useNavigate();
     const onSubmit = (e) => {
         e.preventDefault();
         const {
@@ -14,6 +18,9 @@ const Login = () => {
         login(email, password)
         .then(authData =>{
             console.log(authData)
+        })
+        .catch(()=>{
+            navigate('/404')
         })
 
     }
