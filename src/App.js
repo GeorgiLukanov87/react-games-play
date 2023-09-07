@@ -22,6 +22,10 @@ function App() {
     const [auth, setAuth] = useState({});
     const navigate = useNavigate();
 
+    const userLogin = (authData) => {
+        setAuth(authData);
+    }
+
     const addGameHandler = (gameData) => {
         setGames(oldGames => [
             ...oldGames,
@@ -57,7 +61,7 @@ function App() {
     }, []);
 
     return (
-        <AuthContext.Provider value={{}}>
+        <AuthContext.Provider value={{ auth, userLogin }}>
             <div id="box">
                 <Header />
                 <main id="main-content">
