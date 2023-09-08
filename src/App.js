@@ -16,11 +16,12 @@ import { getAll } from "./services/gameService";
 
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { AuthContext } from './contexts/AuthContext';
+import { useLocalStorage } from './components/hooks/useLocalStorage';
 
 
 function App() {
     const [games, setGames] = useState([]);
-    const [auth, setAuth] = useState({});
+    const [auth, setAuth] = useLocalStorage('auth', {});
     const navigate = useNavigate();
 
     const userLogin = (authData) => {
